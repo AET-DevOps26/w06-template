@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM gradle:8.14-jdk21 AS build
+FROM gradle:9.4.0-jdk25 AS build
 
 # Set working directory
 WORKDIR /app
@@ -15,7 +15,7 @@ COPY src ./src
 RUN gradle bootJar --no-daemon
 
 # Stage 2: Run the application
-FROM gcr.io/distroless/java21-debian12
+FROM eclipse-temurin:25-jre-alpine
 
 WORKDIR /app
 
